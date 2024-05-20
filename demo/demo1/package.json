@@ -1,0 +1,14 @@
+{
+  "name": "demo1",
+  "version": "1.0.0",
+  "description": "esta demo es para intalar jest",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "author": "jeison vargas",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
