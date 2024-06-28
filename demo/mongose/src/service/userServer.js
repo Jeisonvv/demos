@@ -14,11 +14,11 @@ class UserService{
         return newUser
     }
     findUserName = async (name)=> {
-        const user = await User.findOne({name})
+        const user = await User.findOne({name}).populate("vehicle");
         return user
     }
     getById = async (id) => {
-        const user = await User.findById(id);
+        const user = await User.findById(id).populate("vehicle");
         return user
     }
     addVehicle = async (data) => {

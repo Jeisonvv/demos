@@ -1,17 +1,19 @@
 const { Router } = require("express")
-const {userControlers} =require("../controller/userController")
+const userController =require("../controller/userController")
+const validateId = require("../middleware/validateId")
 const {controllersVehicle} = require("../controller/vehicleControllers")
 
 
 const router = Router()
 
-router.get("/user",userControlers.userCotrollerMongoose)
-router.get("/userName",userControlers.getUserByName)
-router.get("/user/:id",userControlers.getUserById)
+router.get("/user",userController.userCotrollerMongoose)
+router.get("/userName",userController.getUserByName)
+// tiene que ser el ultimo
+router.get("/user/:id",validateId, userController.getUserById)
 
-router.post("/user",userControlers.createUserControlleMongoose)
+router.post("/user",userController.createUserControlleMongoose)
 
-router.put("/user/addvehicle",userControlers.addVehicleData)
+router.put("/user/addvehicle",userController.addVehicleData)
 
 
 router.get("/vehicles", controllersVehicle.getAllVehicles)
