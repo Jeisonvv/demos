@@ -1,39 +1,28 @@
-import { Request, Response } from "express";
-import IUser from "../interface/IUser";
-import IuserDto from "../dto/userDto";
+import TUserDto from "../dto/TUserDto";
+import { AppDataSource } from "../config/data-source";
+import { User } from "../entities/user";
 
-
-let users: IUser[] = [
-  {
-    id: 1,
-    name: "jeison",
-    ege: 34,
-    active: true
-  }
-];
-
-let id = 1;
-
+// en esta ocacion lo hice por una clase 
 class UserService{
-    getUser = async (): Promise<IUser[]> =>{
+    getUser = async (): Promise<User[]> =>{
+        const users = await AppDataSource.getRepository(User).find();
         return users
     };
-    createUser = async (data: IuserDto): Promise<IUser> =>{
-        const newUser: IUser = {
-            id,
-            name: data.name,
-            ege: data.ege,
-            active: data.active
-        }
-        users.push(newUser)
-        id++
-        return newUser
+    userById = async (id: number): Promise< User | null > =>{
+        const user = await AppDataSource.getRepository(User).findOneBy({id})
+        return user
     }
-    deleteUser = async (id: number):Promise<void> =>{
-        users = users.filter((user: IUser) => {
-            return user.id !== id
-        })
+    createUser = async (data: TUserDto): Promise<User> =>{
+        const user = AppDataSource.getRepository(User).create(data);
+        const results = await AppDataSource.getRepository(User).save(user)
+        return results
+        
     }
+    // deleteUser = async (id: number):Promise<void> =>{
+    //     users = users.filter((user: User) => {
+    //         return user.id !== id
+    //     })
+    // }
     
 }
 

@@ -1,7 +1,7 @@
-interface IuserDto {
+type TUserDto = {
     name: string;
     ege: number;
     active: boolean
 }
 
-export default IuserDto
+export default TUserDto
