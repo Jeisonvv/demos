@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm"
+import { Vehicle } from "./vehicle"
 // este decorador convierte la clase en una entidad para entidad de user es recomendale que se coloque en plural 
 @Entity({
     name: "users"
@@ -17,4 +18,9 @@ export class User {
 
     @Column()
     active: boolean
+
+    @OneToOne(() => Vehicle)
+    @JoinColumn()
+    vehicle: Vehicle
+
 }

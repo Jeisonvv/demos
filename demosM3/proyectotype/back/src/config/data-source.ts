@@ -1,6 +1,7 @@
 import { DataSource } from "typeorm"
 import { User } from "../entities/user"
 import { Vehicle } from "../entities/vehicle"
+import { Cellphone } from "../entities/cellPhone"
 
 
 export const AppDataSource = new DataSource({
@@ -13,7 +14,7 @@ export const AppDataSource = new DataSource({
     // dropSchema: true,
     synchronize: true,
     logging: false,
-    entities: [User, Vehicle],
+    entities: [User, Vehicle, Cellphone],
     subscribers: [],
     migrations: [],
 })
