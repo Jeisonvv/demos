@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "./user";
 
 @Entity({
     name: "cellPhones"
@@ -9,11 +10,14 @@ export class Cellphone{
     id: number
 
     @Column()
-    Bran: string
+    bran: string
 
     @Column()
     model: string
 
     @Column()
     color: string
+
+    @ManyToOne(()=> User, (user)=> user.cellPhones)
+    user: User
 }

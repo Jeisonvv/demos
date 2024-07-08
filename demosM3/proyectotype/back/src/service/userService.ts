@@ -5,7 +5,10 @@ import { User } from "../entities/user";
 // en esta ocacion lo hice por una clase 
 class UserService{
     getUser = async (): Promise<User[]> =>{
-        const users = await AppDataSource.getRepository(User).find({relations:{vehicle: true}});
+        const users = await AppDataSource.getRepository(User).find({relations:{
+            vehicle: true,
+            cellPhones: true
+        }});
         return users
     };
     userById = async (id: number): Promise< User | null > =>{

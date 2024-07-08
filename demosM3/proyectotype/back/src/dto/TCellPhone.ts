@@ -1,7 +1,8 @@
 type TCellPhone = {
-    Bran: string,
+    bran: string,
     model: string,
-    color: string
+    color: string,
+    userId: number
 }
 
 export default TCellPhone

@@ -16,5 +16,5 @@ export const vehicleByIdController = async (req: Request, res: Response) =>{
 export const createVehicleController = async (req: Request, res: Response) => {
     const {marca, modelo, color, userId} = req.body;
     const newVehicle: Vehicle = await createVehicle({marca, modelo, color, userId})
-    res.status(200).json(newVehicle)
+    res.status(201).json(newVehicle)
 }
