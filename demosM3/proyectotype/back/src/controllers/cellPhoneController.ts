@@ -9,13 +9,22 @@ export const getCellPhoneController = async (req: Request, res: Response) => {
 }
 
 export const cellPhoneByIdController = async (req: Request, res: Response) => {
-    const {id} = req.params
-    const cellPhone: Cellphone | null = await cellPhoneById(Number(id));
-    res.status(200).json(cellPhone)
+    try {
+        const {id} = req.params
+        const cellPhone: Cellphone | void = await cellPhoneById(Number(id));
+        res.status(200).json(cellPhone)
+    } catch (error) {
+        const {id} = req.params
+        res.status(400).json({error: `no existe el cellPhone con el id: ${id}`})
+    }
 }
 
 export const createCellPhoneController = async (req: Request, res: Response) => {
     const {bran, model, color, userId} = req.body;
-    const newCellPhone: Cellphone = await createCellPhone({bran,model,color,userId})
-    res.status(201).json(newCellPhone)
+    try {
+        const newCellPhones: Cellphone|void = await createCellPhone({bran,model,color,userId})
+        res.status(201).json(newCellPhones)
+    } catch (error) {
+        res.status(400).json({error: "error al crear el cellphon"})
+    }
 }

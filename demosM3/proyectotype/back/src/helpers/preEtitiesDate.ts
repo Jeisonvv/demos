@@ -1,4 +1,6 @@
-export const users = [
+import { Cellphone } from "../entities/cellPhone"
+
+export const preloadUsers = [
     {
         name: "Jeison Vargas",
         ege: 33,
@@ -18,5 +20,34 @@ export const users = [
         name: "Hermes Vargas",
         ege: 56,
         active: true
+    }
+]
+
+export const preloadCellPhones = [
+    {
+        bran: "sansung",
+        model: "s30",
+        color: "red",
+        userId: 1
+        
+    },
+    {
+        bran: "pop",
+        model: "s30",
+        color: "green",
+        userId: 4
+        
+    },
+    {
+        bran: "nokia",
+        model: "1101",
+        color: "black",
+        userId: 3
+    },
+    {
+        bran: "black berry",
+        model: "panela",
+        color: "brow",
+        userId: 2
     }
 ]
