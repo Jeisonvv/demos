@@ -19,11 +19,11 @@ class UserController{
         const newUser: User = await userServices.createUser({name, ege, active});
         res.status(201).json(newUser)
     };
-    // deleteUser = async (req:Request, res: Response) =>{
-    //     const {id} = req.body;
-    //     await userServices.deleteUser(id)
-    //     res.status(201).json({message: "eliminado correctamente" })
-    // };
+    deleteUser = async (req:Request, res: Response) =>{
+        const {id} = req.body;
+        await userServices.deleteUser(id)
+        res.status(201).json({message: "eliminado correctamente" })
+    };
     
 };
 
