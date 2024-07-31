@@ -1,6 +1,8 @@
-import { Cellphone } from "../entities/cellPhone"
+import TCellPhone from "../dto/TCellPhone"
+import TUserDto from "../dto/TUserDto"
 
-export const preloadUsers = [
+
+export const preloadUsers: TUserDto[] = [
     {
         name: "Jeison Vargas",
         ege: 33,
@@ -23,7 +25,7 @@ export const preloadUsers = [
     }
 ]
 
-export const preloadCellPhones = [
+export const preloadCellPhones: TCellPhone[] = [
     {
         bran: "sansung",
         model: "s30",

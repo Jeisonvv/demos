@@ -8,7 +8,7 @@ export const PreloanUserData = async () => {
     
     await AppDataSource.manager.transaction(async (transactionalEntityManager) => {
         const allusers = await userRpository.find()
-         if(allusers.length) return console.log("no se hizo la precarga de datos por que ya habian datos")
+         if(allusers.length) return console.log("no se hizo la precarga de datos por que ya habian datos");
             for await (const user of preloadUsers) {
              const newUser = userRpository.create(user);
              await transactionalEntityManager.save(newUser)
@@ -20,8 +20,8 @@ export const PreloanUserData = async () => {
 export const preloanCellphoneData = async () => {
     const queryRunner = AppDataSource.createQueryRunner();
     await queryRunner.connect();
-    const cellPhones = cellPhoneRepository.find()
-        if((await cellPhones).length) return console.log("no se hz la precarga de datos por que ya existian datos")
+    const cellPhones = await cellPhoneRepository.find()
+        if(cellPhones.length) return console.log("no se hz la precarga de datos por que ya existian datos")
     const promises = preloadCellPhones.map(async(cellphones) => {
         
         const  newCellphone = cellPhoneRepository.create(cellphones);
@@ -31,7 +31,7 @@ export const preloanCellphoneData = async () => {
         await queryRunner.manager.save(newCellphone);
         
     })
-    
+
 
     try {
         
